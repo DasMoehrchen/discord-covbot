@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-module.exports = function (msg, ort) {
+module.exports.run = function (msg, ort) {
   let Ortschaft = ort[1];
   for (i = 2; ort[i] != undefined;) {
     Ortschaft = Ortschaft + " " + ort[i];
@@ -478,4 +478,8 @@ async function useData(id, msg) {
     last_update
   } = cov_data.features[0].attributes;
   msg.channel.send((Math.round(cases7_per_100k * 100) / 100) + ' am ' + last_update);
+}
+
+module.exports.help = {
+  name: "cov"
 }
